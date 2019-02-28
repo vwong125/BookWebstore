@@ -9,95 +9,105 @@
     <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
     <script src="main.js"></script> -->
     <style>
-        * {
+        *{
             padding: 0;
             margin: 0;
 
         }
-
-        body {}
+        body{
+            background-color: aliceblue;
+        }
+        #app {
+            display: flex;
+            flex-direction: column;
+        }
 
         #header {
-            background-color: blue;
-            min-height: 100px;
-            width: 100%;
-        }
-
-        #logo {
-            background-color: green;
-            margin-left: 40px;
-            margin-top: 20px;
-            height: 60px;
-            width: 60px;
-
-        }
-
-        #user_info {
-            margin-top: 50px;
-            margin-right: 30px;
-            float: right;
-            background-color: green;
+            order: 1;
+            display: flex;
+            background-color: grey;
+            justify-content: space-between;
+            align-items: flex-end;
         }
 
         #center {
-            margin-top: 40px;
-            background: yellowgreen;
-            /* width: 90%; */
-            margin-left: auto;
-            margin-right: auto;
+            order: 2;
+            /* background-color: green; */
+            display: flex;
+            justify-content: center;
+        }
+        #comments{
+            order: 3;
         }
 
-        #bookcover {
-            margin-top: 40px;
-            float: left;
-            width: 45%;
-            background-color: aqua;
-            margin-left: 5%;
-
+        #user-info {
+            display: flex;
+            /* justify-content: left; */
+            /* flex-direction: row-reverse; */
+            /* flex-wrap: wrap;   */
         }
 
-        #description {
+        #top {
+            display: inline-block;
+        }
+        #bottom{
+            display: inline-block;
+        } 
+        #bookcover{
+            margin: 40px;
+            
+
+        }
+        #description{
             margin-top: 40px;
-            margin-right: 5%;
-            width: 45%;
-            float: right;
-            background: yellow;
+            margin-right: 40px;
+            width: 500px;
+            /* background-color: yellow; */
         }
 
-        #comments {
+        /* #bottom {
             margin-top: 40px;
-            margin-left: auto;
-            margin-right: auto;
-            background-color: brown;
-            clear: both;
-        }
+        } */
     </style>
 </head>
 
 <body>
-    <div id='header'>
-        <img id='logo' src="" alt="This is an image of a logo">
-        <div id='user_info'>
-            <img id='avatar' src="" alt="avatar">
-            Alice Wang
-        </div>
-    </div>
+    <div id='app'>
+        <div id='header'>
+            <div id='logo'>
+                <img src="images/logo.png" alt="This is an image of a logo" width='120px' height='120px'>
+            </div>
 
-    <div id="center">
-        <div id='bookcover'>
-            <img src="#" alt="Book goes here">
-        </div>
-        <div id='description'>
-            <h1>Title</h1>
-            <P>asdfasfasfasfas</P>
+            <div id='user_info'>
+                <div id='top'>
+                    <img src="images/alice.png" alt="avatar" width=80px height=80px>
+                </div>
+                <div id='bottom'>
+                    <h1>Alice Wang</h1>
+                </div>
+
+            </div>
         </div>
 
+        <div id="center">
+            <div id='bookcover'>
+                <img src="images/thg.jpg" alt="Book goes here">
+            </div>
+            <div id='description'>
+                <h1>The Hunger Games</h1>
+                <P>To identify and illustrate The Hunger Games. The image is used for identification in the context of critical commentary of the work for which it serves as cover art. It makes a significant contribution to the user's understanding of the article, which could not practically be conveyed by words alone.The image is placed at the beginning of the article or section discussing the work, to help the user quickly identify the work and know they have found what they are looking for.Use for this purpose does not compete with the purposes of the original work, namely the book cover creator's ability to provide book cover design services and in turn marketing books to the public.</P>
+            </div>
 
-        <div id='comments'>
+
+
+
+        </div>
+
+        <!-- <div id='comments'>
             Comments and Reviews
-        </div>
-
+        </div> -->
     </div>
+
 </body>
 
 </html>
