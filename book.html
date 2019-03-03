@@ -12,7 +12,6 @@
         html,
         body,
         .app {
-            height: 100%;
             width: 100%;
             margin: 0;
         }
@@ -70,8 +69,6 @@
             color: #718daa;
         }
 
-
-
         .header {
             padding-top: .5em;
             padding-bottom: .5em;
@@ -84,6 +81,10 @@
         .app {
             display: flex;
             flex-direction: column;
+        }
+
+        .header {
+            order: 1;
         }
 
         @media (min-width: 769px) {
@@ -112,106 +113,53 @@
 
         }
 
-        .recommend {
-            display: flex;
-            flex-direction: row;
-            justify-content: space-around;
-            align-items: center;
-
-            border: 1px solid #a2a2a2;
-            background-color: #f4f4f4;
-            align-self: center;
-            margin-top: 3vw;
-            box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.75);
-            border-radius: 5px;
-
-            height: 30%;
-            width: 70%;
-        }
-
-        .bookitem {
-            height: 70%;
-            width: 15%;
-            margin: 10px;
-            background-color: grey;
-        }
-
-        .search {
-            display: flex;
-            flex-direction: row;
-            width: 70%;
-            height: 5%;
-            align-self: center;
-            margin-top: 3vw;
-            border-radius: 5px;
-        }
-
-        #search-button {
-            border-radius: 5px;
-            width: 15%;
-            margin-left: 5%;
-        }
-
-        #search-bar {
-            width: 80%;
-            padding: 10px;
-            text-align: center;
-            border-radius: 5px;
-        }
-
-
-
-
         #center {
             order: 2;
             display: flex;
             justify-content: center;
+
         }
 
         #bookInfo {
             margin-top: 40px;
             margin-right: 40px;
-            width: 500px;
+            width: 50%;
         }
 
         #bookcover {
             margin: 40px;
         }
 
-        #comments {
-            order: 3;
+        .after_center {
             display: flex;
-            justify-content: center;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
         }
 
-        /* *{
-            padding: 0;
-            margin: 0;
-
-        }
-        body{
-            background-color: aliceblue;
-        }
-        
-        #comments{
-            order: 3;
-        }
-
-        #user-info {
+        .recommend {
+            border: 1px solid #a2a2a2;
+            background-color: #f4f4f4;
+            box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.75);
+            border-radius: 5px;
+            width: 70%;
+            min-width: 500px;
+            min-height: 300px;
             display: flex;
-            
+            overflow-x: auto;
         }
 
-        #top {
-            display: inline-block;
+        .bookitem {
+            min-width: 200px;
+            margin: 10px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
-        #bottom{
-            display: inline-block;
-        } 
-        
-        
-            
-        } */
+
+        .bkImg {
+            background-color: green;
+        }
     </style>
 </head>
 
@@ -232,11 +180,13 @@
             <div id='bookcover'>
                 <img src="images/thg.jpg" alt="Book goes here">
             </div>
+
             <div id='bookInfo'>
                 <h1 id='title'>Title: The Hunger Games</h1>
-                <h3 id='author'>Author: Feature by T$</h3>
-                <h4 id='tags'>Tags: Hunger, Games</h4>
-                <P> Description: To identify and illustrate The Hunger Games. The image is used for identification in
+                <h3 id='author' style="margin-top:20px;">Author: Feature by T$</h3>
+                <h4 id='tags' style="margin-top:40px;">Tags: Hunger, Games</h4>
+                <P style="margin-top:40px;"> Description: To identify and illustrate The Hunger Games. The image is used
+                    for identification in
                     the context of
                     critical commentary of the work for which it serves as cover art. It makes a significant
                     contribution to the user's understanding of the article, which could not practically be conveyed by
@@ -247,38 +197,111 @@
                 </P>
             </div>
         </div>
-
-        <div id="comments">
-            what happened to comments and reviews?
-
-        </div>
-
-
-
     </div>
 
+    <div style="margin-top:20px;">
 
-    <!-- <div id='app'>
-        <div id='header'>
-            <div id='logo'>
-                <img src="images/logo.png" alt="This is an image of a logo" width='120px' height='120px'>
-            </div>
-
-            <div id='user_info'>
-                <div id='top'>
-                    <img src="images/alice.png" alt="avatar" width=80px height=80px>
-                </div>
-                <div id='bottom'>
-                    <h1>Alice Wang</h1>
-                </div>
-
-            </div>
+    </div>
+    <div class="after_center">
+        <div class="title">
+            <h1>Recommended Titles</h1>
         </div>
 
-        
+        <section class="recommend">
+            <div class="bookitem">
+                <div class='bkImg'>
+                    <img src="images/alice.png" alt="book" height="100%" width="100%">
+                </div>
 
-        
-    </div> -->
+                <div class='bkTitle'>
+                    <p style="text-align: center; margin-top:none">Alice!</p>
+
+                </div>
+            </div>
+            <div class="bookitem">
+                <div class='bkImg'>
+                    <img src="images/alice.png" alt="book" height="100%" width="100%">
+                </div>
+
+                <div class='bkTitle'>
+                    <p style="text-align: center; margin-top:none">Alice!</p>
+
+                </div>
+            </div>
+            <div class="bookitem">
+                <div class='bkImg'>
+                    <img src="images/alice.png" alt="book" height="100%" width="100%">
+                </div>
+
+                <div class='bkTitle'>
+                    <p style="text-align: center; margin-top:none">Alice!</p>
+
+                </div>
+            </div>
+            <div class="bookitem">
+                <div class='bkImg'>
+                    <img src="images/alice.png" alt="book" height="100%" width="100%">
+                </div>
+
+                <div class='bkTitle'>
+                    <p style="text-align: center; margin-top:none">Alice!</p>
+
+                </div>
+            </div>
+            <div class="bookitem">
+                <div class='bkImg'>
+                    <img src="images/alice.png" alt="book" height="100%" width="100%">
+                </div>
+
+                <div class='bkTitle'>
+                    <p style="text-align: center; margin-top:none">Alice!</p>
+
+                </div>
+            </div>
+            <div class="bookitem">
+                <div class='bkImg'>
+                    <img src="images/alice.png" alt="book" height="100%" width="100%">
+                </div>
+
+                <div class='bkTitle'>
+                    <p style="text-align: center; margin-top:none">Alice!</p>
+
+                </div>
+            </div>
+            <div class="bookitem">
+                <div class='bkImg'>
+                    <img src="images/alice.png" alt="book" height="100%" width="100%">
+                </div>
+
+                <div class='bkTitle'>
+                    <p style="text-align: center; margin-top:none">Alice!</p>
+
+                </div>
+            </div>
+            <div class="bookitem">
+                <div class='bkImg'>
+                    <img src="images/alice.png" alt="book" height="100%" width="100%">
+                </div>
+
+                <div class='bkTitle'>
+                    <p style="text-align: center; margin-top:none">Alice!</p>
+
+                </div>
+            </div>
+            <div class="bookitem">
+                <div class='bkImg'>
+                    <img src="images/alice.png" alt="book" height="100%" width="100%">
+                </div>
+
+                <div class='bkTitle'>
+                    <p style="text-align: center; margin-top:none">Alice!</p>
+
+                </div>
+            </div>
+
+        </section>
+    </div>
+
 
 </body>
 

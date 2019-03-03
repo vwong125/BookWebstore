@@ -9,81 +9,197 @@
     <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
     <script src="main.js"></script> -->
     <style>
-        *{
-        padding: 0;
-        margin:0;
+        body,
+        .app {
+            height: 100%;
+            width: 100%;
+            margin: 0;
+        }
 
-    }
-    body{
-        
-    }   
-    #header{
-        background-color: blue;
-        min-height: 100px;
-        width: 100%;
-    }
-    #logo{      
-        background-color: green;   
-        margin-left: 40px;
-        margin-top:20px;
-        height:60px;
-        width:60px;  
-             
-    }
-    #user_info{
-        margin-top: 50px;
-        margin-right: 30px;
-        float: right;
-        background-color: green;
-    }
-    #searchArea, #recommended{
-        margin-top: 40px;
-        background-color: aqua;  
-        width: 90%;
-        margin-left: auto;
-        margin-right: auto;
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            min-height: 100vh;
+        }
+
+        ul {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        h2,
+        h3,
+        a {
+            color: #34495e;
+            text-decoration: none;
+        }
+
+        .logo {
+            margin: 0;
+            font-size: 1.45em;
+        }
+
+        .main-nav {
+            margin-top: 5px;
+
+        }
+
+        .logo a,
+        .main-nav a {
+            padding: 10px 15px;
+            text-transform: uppercase;
+            text-align: center;
+            display: block;
+        }
+
+        .main-nav a {
+            color: #34495e;
+            font-size: .99em;
+        }
+
+        .main-nav a:hover {
+            color: #718daa;
+        }
 
 
-    }
 
+        .header {
+            padding-top: .5em;
+            padding-bottom: .5em;
+            border: 1px solid #a2a2a2;
+            background-color: #f4f4f4;
+            box-shadow: 0px 0px 14px 0px rgba(0, 0, 0, 0.75);
+            border-radius: 5px;
+        }
+
+        .app {
+            display: flex;
+            flex-direction: column;
+        }
+
+        @media (min-width: 769px) {
+
+            .header,
+            .main-nav {
+                display: flex;
+            }
+
+            .header {
+                flex-direction: column;
+                align-items: center;
+                width: 100%;
+                margin: 0 auto;
+                max-width: 2050px;
+
+            }
+
+        }
+
+        @media (min-width: 1025px) {
+            .header {
+                flex-direction: row;
+                justify-content: space-between;
+            }
+
+        }
+
+        .recommend {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-around;
+            align-items: center;
+
+            border: 1px solid #a2a2a2;
+            background-color: #f4f4f4;
+            align-self: center;
+            margin-top: 3vw;
+            box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.75);
+            border-radius: 5px;
+
+            height: 30%;
+            width: 70%;
+        }
+
+        .bookitem {
+            height: 70%;
+            width: 15%;
+            margin: 10px;
+            background-color: grey;
+        }
+
+        .search {
+            display: flex;
+            flex-direction: row;
+            width: 70%;
+            height: 5%;
+            align-self: center;
+            margin-top: 3vw;
+            border-radius: 5px;
+        }
+
+        #search-button {
+            border-radius: 5px;
+            width: 15%;
+            margin-left: 5%;
+        }
+
+        #search-bar {
+            width: 80%;
+            padding: 10px;
+            text-align: center;
+            border-radius: 5px;
+        }
     </style>
 </head>
 
 <body>
-    <div id='header'>
-        <img id='logo' src="" alt="This is an image of a logo">
-        <div id='user_info'>
-            <img id='avatar' src="" alt="avatar">
-            Alice Wang
-        </div>
-    </div>
+    <!DOCTYPE html>
+<html lang="en">
 
-    <div id='searchArea'>
-        <div id='featured'>
-            <div>
-                Implementation of hte scrolly thingy
+<head>
+    <title>Bookstoredb</title>
+    <link rel="stylesheet" href="./css/search.css">
+</head>
+
+<body>
+    <div class="app">
+        <header class="header">
+            <h1 class="logo"><a href="#">Bookstore DB</a></h1>
+            <ul class="main-nav">
+                <li><a href="#">Home</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Username</a></li>
+                <li><a href="#">Library</a></li>
+            </ul>
+        </header>
+
+        <div class="recommend">
+            <div class="bookitem">
+                <img src="./img/asoiaf.jpg" alt="book" height="100%" width="100%" style="margin:none"> 
+                <p style="text-align: center; margin-top:none" >A song of ice and fire</p>
             </div>
-
+            <div class="bookitem"></div>
+            <div class="bookitem"></div>
+            <div class="bookitem"></div>
         </div>
 
-        <div id=searchbar>
-            <form action="#" method="get">
-                <input type="text" name="fname">
-                <button>Search</button>
-            </form>
-
+        <div class="search">
+            <input id="search-bar" type="search" placeholder="Search a book today!">
+            <button id="search-button">Search</button>
         </div>
+
     </div>
 
 
-    <div id='recommended'>
-        <h1>
-            Recommended For You
-        </h1>
-        <div>
-            blah blah blah
-        </div>
-    </div>
+</body>
+
+</html>
 </body>
 
 </html>
