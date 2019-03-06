@@ -1,0 +1,178 @@
+html,
+        body,
+        .app {
+            width: 100%;
+            margin: 0;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            min-height: 100vh;
+        }
+
+        ul {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        h2,
+        h3,
+        a {
+            color: #34495e;
+            text-decoration: none;
+        }
+
+        .logo {
+            margin: 0;
+            font-size: 1.45em;
+        }
+
+        .main-nav {
+            margin-top: 5px;
+
+        }
+
+        .logo a,
+        .main-nav a {
+            padding: 10px 15px;
+            text-transform: uppercase;
+            text-align: center;
+            display: block;
+        }
+
+        .main-nav a {
+            color: #34495e;
+            font-size: .99em;
+        }
+
+        .main-nav a:hover {
+            color: #718daa;
+        }
+
+        .header {
+            padding-top: .5em;
+            padding-bottom: .5em;
+            border: 1px solid #a2a2a2;
+            background-color: #f4f4f4;
+            box-shadow: 0px 0px 14px 0px rgba(0, 0, 0, 0.75);
+            border-radius: 5px;
+        }
+
+        .app {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .header {
+            order: 1;
+        }
+
+        @media (min-width: 769px) {
+
+            .header,
+            .main-nav {
+                display: flex;
+            }
+
+            .header {
+                flex-direction: column;
+                align-items: center;
+                width: 100%;
+                margin: 0 auto;
+                max-width: 2050px;
+
+            }
+
+        }
+
+        @media (min-width: 1025px) {
+            .header {
+                flex-direction: row;
+                justify-content: space-between;
+            }
+
+        }
+
+        #center {
+            order: 2;
+            display: flex;
+            justify-content: center;
+
+        }
+
+        #bookInfo {
+            margin-top: 40px;
+            margin-right: 40px;
+            width: 50%;
+        }
+
+        #bookcover {
+            margin: 40px;
+        }
+
+        .after_center {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+        }
+
+        .recommend {
+            border: 1px solid #a2a2a2;
+            background-color: #f4f4f4;
+            box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.75);
+            border-radius: 5px;
+            width: 70%;
+            min-width: 500px;
+            min-height: 300px;
+            display: flex;
+            overflow-x: auto;
+        }
+
+        .bookitem {
+            min-width: 200px;
+            margin: 10px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .bkImg {
+            background-color: green;
+        }
+
+        .author{
+            margin-top:20px;
+
+        }
+
+        .tags{
+            margin-top:40px;
+        }
+
+        .spacer{
+            margin-top:20px;
+        }
+
+        .bookInfoPara{
+            margin-top:40px;
+        }
+
+        .bkImgTag{
+            height: 100%;
+            width:100%;
+        }
+
+        .bkTitlePara{
+            text-align: center;
+            margin-top:none
+        }
