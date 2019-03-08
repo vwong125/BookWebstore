@@ -1,0 +1,4 @@
+Hostname: dbproject.chw0z33b0eoj.us-west-2.rds.amazonaws.com
+Port: 3306
+Username: bookadmin
+Password: proj1234
