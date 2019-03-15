@@ -11,6 +11,7 @@ new Vue({
             xhttp.onreadystatechange = () => {
                 if (xhttp.readyState == 4 && xhttp.status == 200) {
                     console.log(xhttp.response);
+                    window.location.href = "/list.html";
                 }
             }
             xhttp.open('POST', "/search", true);
