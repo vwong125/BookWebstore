@@ -98,7 +98,7 @@ app.post("/search", function (req, res) {
                             if (err) {
                                 console.log("error");
                             }
-                            console.log(result);
+                            
                             if (books == null) {
                                 books = result;
                   
@@ -132,7 +132,6 @@ app.post("/search", function (req, res) {
 
         promise.then(() => {
             req.session.searchQuery = JSON.stringify(books);
-            console.log(req.session.searchQuery);
             res.send("success");
 
         })
@@ -140,7 +139,40 @@ app.post("/search", function (req, res) {
     }
 });
 
+app.post("/load_list", (req, res) => {
+    res.send(req.session.searchQuery);
+})
 
+app.post("/moreInfo", (req, res) => {
+    if (req.body.title) {
+        var con = mysql.createConnection({
+            host: "dbproject.chw0z33b0eoj.us-west-2.rds.amazonaws.com",
+            user: "bookadmin",
+            password: "proj1234",
+            database: "bookstoredb"
+        });
+
+        let bookInformationQuery = `SELECT * FROM books WHERE book_title = "${req.body.title}"`
+
+        con.connect( err => {
+            if (err) {
+                throw err;
+            };
+
+            con.query(bookInformationQuery, (err, result) => {
+                if (err) {
+                    throw err;
+                }
+                
+                req.session.bookInfo = JSON.stringify(result[0]);
+                console.log(req.session.bookInfo);
+            });
+        })
+        res.send("success");
+    } else {
+        res.send("failure");
+    }
+})
 
 app.listen(PORT, (err) => {
     if (err) { console.log("Error"); }
