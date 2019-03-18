@@ -10,7 +10,6 @@ new Vue({
             var xhttp = new XMLHttpRequest();
             xhttp.onreadystatechange = () => {
                 if (xhttp.readyState == 4 && xhttp.status == 200) {
-                    console.log(xhttp.response);
                     window.location.href = "/list.html";
                 }
             }
