@@ -4,6 +4,7 @@ new Vue({
         books: {},
         failure: true,
     },
+    // function to run an ajax call to the server to receive information on books to load
     created: function() {
         var xhttp = new XMLHttpRequest();
         xhttp.onreadystatechange = () => {
@@ -22,6 +23,7 @@ new Vue({
         xhttp.send("load");
     },
     methods: {
+        // view more information on a book
         moreInfo: function(book_name) {
             var xhttp = new XMLHttpRequest();
             xhttp.onreadystatechange = () => {
@@ -36,7 +38,6 @@ new Vue({
             xhttp.open('POST', '/moreInfo');
             xhttp.setRequestHeader("Content-type", "application/json");
             xhttp.send(JSON.stringify({title: book_name}));
-
         },
     }
 })

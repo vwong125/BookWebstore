@@ -6,6 +6,7 @@ new Vue({
         num: 100,
         featuredBooks: {},
     },
+    // function run to send a request to the server to find feature books on webpage load
     created: function() {
         let xhttp = new XMLHttpRequest();
         xhttp.onreadystatechange = () => {
@@ -17,9 +18,10 @@ new Vue({
         xhttp.open("POST", "/featureBook");
         xhttp.setRequestHeader("Content-type", "text");
         xhttp.send("load");
-        console.log('sending');
+
     },
     methods: {
+        // function to search books for a tag or title
         search: function() {
             var xhttp = new XMLHttpRequest();
             xhttp.onreadystatechange = () => {
@@ -30,9 +32,9 @@ new Vue({
             xhttp.open('POST', "/search", true);
             xhttp.setRequestHeader("Content-type", "application/json");
             xhttp.send(JSON.stringify({title: this.title}));
-            console.log(this.title);
+ 
         },
-
+        // view information for a book
         moreInfo: function(book_name) {
             var xhttp = new XMLHttpRequest();
             xhttp.onreadystatechange = () => {
