@@ -20,19 +20,16 @@
                 </ul>
             </header>
 
-            <div class="recommend">
-                <div class="bookitem">
-                    <img src="./img/asoiaf.jpg" alt="book" height="100%" width="100%" style="margin:none">
-                    <p style="text-align: center; margin-top:none">A song of ice and fire</p>
-                </div>
-                <div class="bookitem"></div>
-                <div class="bookitem"></div>
-                <div class="bookitem"></div>
-            </div>
-
             <div class="search">
                 <input v-model="title" id="search-bar" type="search" placeholder="Search a book today!">
                 <button @click='search' id="search-button">Search</button>
+            </div>
+            
+            <div class="recommend">
+                <div class="bookitem" v-for="book in featuredBooks">
+                    <img @click="moreInfo(book.book_title)" src="{{book.book_picture}}" alt="book" height="200px" width="130px" style="margin:none">
+                    <p id="booktitle">{{book.book_title}}</p>
+                </div>
             </div>
         </div>
     </div>
