@@ -4,12 +4,13 @@ new Vue({
         bookInfo: {},
         recommendedBooks: {},
     },
+    // Function run when the webpage loads. sends a request to get information for the book
+    // page and sets it as a variable in the vue instance
     created: function() {
         var xhttp = new XMLHttpRequest();
         xhttp.onreadystatechange = () => {
             if (xhttp.readyState == 4 && xhttp.status == 200) {
                 this.bookInfo = JSON.parse(xhttp.response);
-                
             }
         }
         
@@ -30,6 +31,7 @@ new Vue({
     },
 
     methods: {
+        // method to go view other book information
         moreInfo: function(book_name) {
             var xhttp = new XMLHttpRequest();
             xhttp.onreadystatechange = () => {
