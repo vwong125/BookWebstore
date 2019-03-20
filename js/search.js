@@ -51,5 +51,11 @@ new Vue({
             xhttp.send(JSON.stringify({title: book_name}));
 
         },
+        openForm: ()=> {
+            document.getElementById("myForm").style.display = "block";
+        },
+        closeform: ()=>{
+            document.getElementById("myForm").style.display = "none";
+        } 
     }
 })
