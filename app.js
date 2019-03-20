@@ -1,26 +1,24 @@
+//Constants
+
 // use express dependency
 const express = require('express');
-
 // use path dependency
 const path = require('path');
-
 // use mysql dependency
 const mysql = require('mysql');
-
 // use bodyParser dependency
 const bodyParser = require('body-parser');
-
 // use express-session dependency
 const session = require('express-session');
-
 // set up server
 const app = express();
-
 // set port number for server
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 
 // set static folder
 app.use(express.static(path.join(__dirname)));
+//provide pathing for client
+app.use("/scripts", express.static("build"));
 
 // used to extract data from client
 app.use(express.json());
@@ -30,7 +28,11 @@ app.use(bodyParser.urlencoded({
 }));
 
 // setUp express-session
-app.use(session({ secret: "bookstoredb", saveUninitialized: false }));
+app.use(session(    {
+        secret: "bookstoredb",
+        resave: true,
+        saveUninitialized: false
+    }));
 
 // pool used for pooling sql connections
 var pool = mysql.createPool({
@@ -40,6 +42,15 @@ var pool = mysql.createPool({
     database: "bookstoredb",
     connectionLimit: 10,
 });
+
+//Establish a connection to mysql database.
+let connection = mysql.createConnection({
+    host: 'dbproject.chw0z33b0eoj.us-west-2.rds.amazonaws.com',
+    user: 'bookadmin',
+    password: 'proj1234',
+    database: 'bookstoredb'
+});
+
 
 // get request for landing page, send search.html upon loading
 app.get("/", (req, res) => {
@@ -213,7 +224,7 @@ app.post("/moreBookInfo", (req, res) => {
 
 // post request to get the recommended books on the book page
 app.post("/recommendedBooks", (req, res) => {
-    
+
     // stores the tag that the book has
     let bookTag = req.session.bookTags.tag_name;
 
@@ -230,8 +241,64 @@ app.post("/recommendedBooks", (req, res) => {
     })
 })
 
+//checks for a logged in session variable
+app.post("/checkSession", (req, res)=>{
+    if (req.session.username) {
+        res.json({
+            status: "success",
+            name: req.session.username,
+        })
+    } else {
+        res.json({
+            status: "failed",
+            name: req.session.username,
+        })
+    }
+})
+
+//Handles a login request.
+app.post("/userInfo", (req, res) => {
+    console.log((req.body))
+    if (req.body.type === "getUserInfo") {
+        // console.log("post sucessful");
+        // console.log(req.body)        
+
+        let username = req.body.user;
+        let psw = req.body.psw;
+
+        // //have to validate data ???
+        let mysqlStatement = "SELECT first_name, last_name FROM users WHERE username = " + "'" + username + "'" + " AND pass = '" + psw + "';";
+        console.log(mysqlStatement);
+        connection.query(mysqlStatement, (error, results, fields) => {
+            if (error) {
+                return console.error(error.message);
+            }
+            // console.log(!results);
+            if (!results) {
+                console.log("..hellow" + results + "...no match")
+                res.send({ status: "failed" });
+            } else {
+                // console.log(results[0].first_name);
+                // console.log(results[0].last_name);
+                console.log("Server sending sql result to client")
+                res.json({
+                    status: "success",
+                    first: results[0].first_name,
+                    second: results[0].last_name
+
+                });
+            }
+        })
+
+        //save sessions
+        req.session.username = username;
+        req.session.psw = psw;
+    }
+});
+
 // port to host the server
 app.listen(PORT, (err) => {
     if (err) { console.log("Error"); }
     console.log(`Server started on port ${PORT}`)
+    console.log(`Listening on PORT ${PORT}`)
 });

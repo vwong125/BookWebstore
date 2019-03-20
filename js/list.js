@@ -38,6 +38,12 @@ new Vue({
             xhttp.open('POST', '/moreInfo');
             xhttp.setRequestHeader("Content-type", "application/json");
             xhttp.send(JSON.stringify({title: book_name}));
+        },        
+        openForm: ()=> {
+            document.getElementById("myForm").style.display = "block";
         },
+        closeform: ()=>{
+            document.getElementById("myForm").style.display = "none";
+        }
     }
 })

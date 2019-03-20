@@ -11,6 +11,9 @@
     <link rel="stylesheet" href="../css/list.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/1.0.18/vue.min.js"></script>
 
+    <script src="scripts/mainbundle.js"></script>
+    <link rel="stylesheet" href="../css/login.css">
+
 </head>
 
 <body>
@@ -24,7 +27,27 @@
                     <li><a href="#">Username</a></li>
                     <li><a href="#">Library</a></li>
                 </ul>
+                <div class='user' id='userLogin'>
+                    <button id='loginpopup' type="button" @click="openForm">Login</button>
+    
+                    <div class="form-popup" id="myForm">
+                        <form class="form-container" id="userInfoForm">
+                            <h1>Login</h1>
+    
+                            <label for="Username"><b>Username</b></label>
+                            <input id='getUserID' type="text" placeholder="Enter Username" name="user" required>
+    
+                            <label for="psw"><b>Password</b></label>
+                            <input id='psw' type="password" placeholder="Enter Password" name="psw" required>
+    
+                            <button type="submit" id='loginbtn' class="btn">Login</button>
+                            <button type="submit" class="btn cancel" @click="closeForm">Close</button>
+                        </form>
+                    </div>
+                </div>
             </header>
+
+            
         </div>
 
 
@@ -37,17 +60,17 @@
                 </div>
 
                 <div class="infobk">
-                        <h2 id="title">{{book.book_title}}</h1>
+                    <h2 id="title">{{book.book_title}}</h1>
                         <h3 id="author">Author: {{book.book_author}}</h3>
                         <h3 id="tags">Tags: {{book.tag_name}}</h3>
-                    <div id="book_info_block">
-                        <h4 id="Description">Description: {{ book.book_description }}</h3>
-                    </div>
+                        <div id="book_info_block">
+                            <h4 id="Description">Description: {{ book.book_description }}</h3>
+                        </div>
 
-                    <div id="list_buttons_div">
-                        <button @click="moreInfo(book.book_title)" class="list_buttons">More Information</button>
-                        <button class="list_buttons">Add To Cart</button>
-                    </div>
+                        <div id="list_buttons_div">
+                            <button @click="moreInfo(book.book_title)" class="list_buttons">More Information</button>
+                            <button class="list_buttons">Add To Cart</button>
+                        </div>
 
                 </div>
             </div>
