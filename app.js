@@ -353,15 +353,19 @@ app.post("/getCart", (req, res) => {
             if (error) {
                 return console.error(error.message);
             }
+            
             if (!results) {
                 console.log("..hellow" + results + "There was an error getting the cart, getCart, returns no results")
                 res.send({ status: "failed" });
             } else {
-                console.log("Server sending sqL data to client")
-                res.json({
+                console.log("Server sending sqL CART data to client")
+                // console.log(results)
+                res.send(
+                    {
                     status: "success",
                     cart: results
-                });
+                }
+                );
             }
         })
         if (success) {
