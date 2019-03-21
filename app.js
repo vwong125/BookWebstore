@@ -17,7 +17,7 @@ const PORT = process.env.PORT || 3000;
 
 // set static folder
 app.use(express.static(path.join(__dirname)));
-//provide pathing for client
+//provide pathing scripts for client
 app.use("/scripts", express.static("build"));
 
 // used to extract data from client
@@ -28,11 +28,11 @@ app.use(bodyParser.urlencoded({
 }));
 
 // setUp express-session
-app.use(session(    {
-        secret: "bookstoredb",
-        resave: true,
-        saveUninitialized: false
-    }));
+app.use(session({
+    secret: "bookstoredb",
+    resave: true,
+    saveUninitialized: false
+}));
 
 // pool used for pooling sql connections
 var pool = mysql.createPool({
@@ -70,6 +70,13 @@ app.get("/list.html", (req, res) => {
 // get request for /book.html, send book.html
 app.get("/book.html", (req, res) => {
     res.sendFile("book.html", { root: __dirname + "/public" });
+});
+
+//cart page
+app.get("/cart.html", (req, res) => {
+    if (req.session.username) {
+        res.sendFile(path.join(__dirname, "/public/cart.html"));
+    }
 });
 
 // post request from the client 
@@ -203,7 +210,6 @@ app.post("/moreInfo", (req, res) => {
         })
 
         detailsPromise.then(() => {
-
             pool.query(tagInformationQuery, (err, result) => {
                 if (err) throw err;
                 req.session.bookTags = result[0];
@@ -242,7 +248,7 @@ app.post("/recommendedBooks", (req, res) => {
 })
 
 //checks for a logged in session variable
-app.post("/checkSession", (req, res)=>{
+app.post("/checkSession", (req, res) => {
     if (req.session.username) {
         res.json({
             status: "success",
@@ -295,6 +301,85 @@ app.post("/userInfo", (req, res) => {
         req.session.psw = psw;
     }
 });
+
+app.post("/addBookToCart", (req, res) => {
+    //Check session tokens
+    if (req.session.username) {
+        console.log("adBOOKstocart, user is logged in")
+        //add book to mysql database        
+        // console.log(req.body);
+        let username = req.session.username;
+        let book_id = req.body.book.book_id;
+        let mysqlStatement = `INSERT INTO cart (username, book_id) VALUES ("${username}", ${book_id});`;
+
+        let success = connection.query(mysqlStatement, (error, results, fields) => {
+            if (error) {
+                return console.error(error.message);
+            }
+        })
+        if (success) {
+            console.log("Book added to database")
+        } else {
+            console.log("Book was not added to database")
+        }
+
+        // console.log(mysqlStatement);
+        res.json({
+            status: "success",
+            name: req.session.username,
+        })
+    } else {
+        console.log("adBOOKstocart, user is NOT logged in")
+        res.json({
+            status: "failed",
+            name: req.session.username,
+        })
+    }
+
+})
+
+app.post("/getCart", (req, res) => {
+    //Check session tokens
+    if (req.session.username) {
+        console.log("Getting Cart")
+        //add book to mysql database        
+        // console.log(req.body);
+        let username = req.session.username;
+
+        let mysqlStatement = `SELECT DISTINCT cart.book_id, book_title, book_author, book_picture,
+         book_price FROM cart JOIN bookstoredb.books ON cart.book_id = books.book_id WHERE username = "${username}"`;
+
+        let success = connection.query(mysqlStatement, (error, results, fields) => {
+            if (error) {
+                return console.error(error.message);
+            }
+            if (!results) {
+                console.log("..hellow" + results + "There was an error getting the cart, getCart, returns no results")
+                res.send({ status: "failed" });
+            } else {
+                console.log("Server sending sqL data to client")
+                res.json({
+                    status: "success",
+                    cart: results
+                });
+            }
+        })
+        if (success) {
+            console.log("Books received from cart");
+        } else {
+            console.log("Books NOT received from cart");
+        }
+
+        // console.log(mysqlStatement);
+
+    } else {
+        console.log("adBOOKstocart, user is NOT logged in")
+        res.json({
+            status: "failed",
+            name: req.session.username,
+        })
+    }
+})
 
 // port to host the server
 app.listen(PORT, (err) => {

@@ -1,10 +1,8 @@
-html,
-        body,
-        .app {
+        body, .app {
             margin: 0;
             margin-bottom: 50px;
             padding: 0;
-        }        
+        }
 
         body {
             font-family: 'Montserrat', sans-serif;
@@ -19,9 +17,7 @@ html,
             list-style: none;
         }
 
-        h2,
-        h3,
-        a {
+        h2, h3, a {
             color: #34495e;
             text-decoration: none;
         }
@@ -33,11 +29,9 @@ html,
 
         .main-nav {
             margin-top: 5px;
-
         }
 
-        .logo a,
-        .main-nav a {
+        .logo a, .main-nav a {
             padding: 10px 15px;
             text-transform: uppercase;
             text-align: center;
@@ -52,8 +46,6 @@ html,
         .main-nav a:hover {
             color: #718daa;
         }
-
-
 
         .header {
             padding-top: .5em;
@@ -71,21 +63,16 @@ html,
         }
 
         @media (min-width: 769px) {
-
-            .header,
-            .main-nav {
+            .header, .main-nav {
                 display: flex;
             }
-
             .header {
                 flex-direction: column;
                 align-items: center;
                 width: 100%;
                 margin: 0 auto;
                 max-width: 2050px;
-
             }
-
         }
 
         @media (min-width: 1025px) {
@@ -93,7 +80,6 @@ html,
                 flex-direction: row;
                 justify-content: space-between;
             }
-
         }
 
         .search {
@@ -125,7 +111,6 @@ html,
             flex-direction: column;
             justify-content: space-evenly;
             align-items: center;
-
         }
 
         .book {
@@ -139,45 +124,39 @@ html,
             width: 150px;
         }
 
-
-
-        .spacer{
-            margin-top:20px;
+        .spacer {
+            margin-top: 20px;
         }
 
-        .author{
-            margin-top:20px;
-
+        .author {
+            margin-top: 20px;
         }
 
-        
-        .spacer{
-            margin-top:20px;
+        .spacer {
+            margin-top: 20px;
         }
 
         #failure {
-            text-align:center;
+            text-align: center;
         }
 
         .book_img {
-
             padding: 10px;
         }
 
         .infobk {
             padding-left: 10px;
-            position:relative;
+            position: relative;
         }
 
         #list_buttons_div {
-            
             margin: 10px;
             position: absolute;
             right: 0;
             bottom: 0;
         }
+
         .list_buttons {
-            
             border-radius: 3px;
             padding: 10px;
             margin: 5px;
@@ -188,10 +167,6 @@ html,
             overflow-y: scroll;
         }
 
-         ::-webkit-scrollbar {
+        ::-webkit-scrollbar {
             display: none;
         }
-
-
-
-        
