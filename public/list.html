@@ -4,7 +4,7 @@
 <head>
     <!-- <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge"> -->
-    <title>Book Page</title>
+    <title>List Page</title>
     <!-- <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
     <script src="main.js"></script> -->
@@ -12,6 +12,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/1.0.18/vue.min.js"></script>
 
     <script src="scripts/mainbundle.js"></script>
+    <script src="scripts/list_webpackbundle.js"></script>
+
     <link rel="stylesheet" href="../css/login.css">
 
 </head>
@@ -29,17 +31,17 @@
                 </ul>
                 <div class='user' id='userLogin'>
                     <button id='loginpopup' type="button" @click="openForm">Login</button>
-    
+
                     <div class="form-popup" id="myForm">
                         <form class="form-container" id="userInfoForm">
                             <h1>Login</h1>
-    
+
                             <label for="Username"><b>Username</b></label>
                             <input id='getUserID' type="text" placeholder="Enter Username" name="user" required>
-    
+
                             <label for="psw"><b>Password</b></label>
                             <input id='psw' type="password" placeholder="Enter Password" name="psw" required>
-    
+
                             <button type="submit" id='loginbtn' class="btn">Login</button>
                             <button type="submit" class="btn cancel" @click="closeForm">Close</button>
                         </form>
@@ -47,11 +49,18 @@
                 </div>
             </header>
 
-            
+
         </div>
 
 
+
         <p id="failure" v-if="failure">No Results Found....Please Search Again</p>
+
+        <div id="checkout">
+            <button @click="cart">
+                Cart
+            </button>
+        </div>
 
         <div id='information'>
             <div class="book" v-for="book in books">
@@ -60,23 +69,25 @@
                 </div>
 
                 <div class="infobk">
-                    <h2 id="title">{{book.book_title}}</h1>
-                        <h3 id="author">Author: {{book.book_author}}</h3>
-                        <h3 id="tags">Tags: {{book.tag_name}}</h3>
-                        <div id="book_info_block">
-                            <h4 id="Description">Description: {{ book.book_description }}</h3>
-                        </div>
+                    <h1 id="title">{{book.book_title}}</h1>
+                    <h3 id="author">Author: {{book.book_author}}</h3>
+                    <h3 id="tags">Tags: {{book.tag_name}}</h3>
+                    <div id="book_info_block">
+                        <h4 id="Description">Description: {{ book.book_description }}</h3>
+                    </div>
 
-                        <div id="list_buttons_div">
-                            <button @click="moreInfo(book.book_title)" class="list_buttons">More Information</button>
-                            <button class="list_buttons">Add To Cart</button>
-                        </div>
+                    <div id="list_buttons_div">
+                        <button @click="moreInfo(book.book_title)" class="list_buttons">More Information</button>
+                        <button @click="addBooktoCart(book)" class="list_buttons">Add To Cart</button>
+                    </div>
 
                 </div>
             </div>
         </div>
 
-        <script src="../js/list.js"></script>
+
+
+        <!-- <script src="../js/list.js"></script> -->
 </body>
 
 </html>

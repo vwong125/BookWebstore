@@ -1,6 +1,4 @@
 
-// import {clearNode} from "./utils";
-
 //check session variable
 $(document).ready(
     () => {
@@ -19,7 +17,11 @@ $(document).ready(
 
                     document.getElementById("userLogin").appendChild(newDiv);
                 }
-            }
+            },
+            error: function (data) {
+                console.log('An error occurred.');
+                console.log(data);
+            },
         })
 
         //overwrite login behaviour
@@ -29,8 +31,7 @@ $(document).ready(
 
             $.ajax({
                 url: "/userInfo",
-                type: "POST",
-                req_type: "getUserInfo",
+                type: "POST",                
                 data: {
                     type: "getUserInfo",
                     user: document.getElementById("getUserID").value,
@@ -61,6 +62,8 @@ $(document).ready(
                         // newDiv.id = "hello";
 
                         document.getElementById("userLogin").appendChild(newDiv);
+
+                        document.getElementById("checkout").style.display = "block";
 
                     } else {
                         newDiv.innerText = "YOUR USERNAME OR PASSWORD DOESNT EXIST";
