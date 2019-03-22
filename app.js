@@ -76,6 +76,8 @@ app.get("/book.html", (req, res) => {
 app.get("/cart.html", (req, res) => {
     if (req.session.username) {
         res.sendFile(path.join(__dirname, "/public/cart.html"));
+    }else{
+        res.send("Error 404 Page not found")
     }
 });
 

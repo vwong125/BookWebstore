@@ -85,11 +85,11 @@ $(document).ready(() => {
                     }
                 })
             },
-            cart: () => {
-                window.location.href = "/cart.html";
-                console.log("going to Cart Page");
+            // cart: () => {
+            //     window.location.href = "/cart.html";
+            //     console.log("going to Cart Page");
                 
-            },
+            // },
         }
     })
 

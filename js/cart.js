@@ -18,25 +18,14 @@ $(document).ready(() => {
                 success: (data1) => {
                     
                     if (data1.status === "success"){
-                        console.log(data1.cart)
-                        
-                       
-
-                        this.books = data1.cart;
-                        
-
-                       
-                        
+                        console.log(data1.cart)   
+                        this.books = data1.cart;                        
                     } else {
+                        failture = false;
                         //write your cart was empty
                     }                                
-                },
-                      
-            })
-
-            
-        },
-        
+                },                      
+            })           
+        },        
     })
-
 })
