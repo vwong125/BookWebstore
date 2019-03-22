@@ -55,6 +55,7 @@
                 <div id='bookInfo'>
                     <h1 id='title'>{{ bookInfo.details.book_title }}</h1>
                     <h3 id='author'>Author: {{ bookInfo.details.book_author }}</h3>
+                    <h3 id='price'>Price: ${{ bookInfo.details.book_price }}.00</h3>
                     <h4 id='tags'>
                         Tags:
                         <span v-for="tag in bookInfo.tags">
