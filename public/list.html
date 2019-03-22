@@ -8,13 +8,13 @@
     <!-- <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
     <script src="main.js"></script> -->
-    <link rel="stylesheet" href="../css/list.css">
+    <link rel="stylesheet" href="styles/list.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/1.0.18/vue.min.js"></script>
 
-    <script src="scripts/mainbundle.js"></script>
-    <script src="scripts/list_webpackbundle.js"></script>
+    <script src="scripts/loginbundle.js"></script>
+    <script src="scripts/listbundle.js"></script>
 
-    <link rel="stylesheet" href="../css/login.css">
+    <link rel="stylesheet" href="styles/login.css">
 
 </head>
 
@@ -37,10 +37,10 @@
                             <h1>Login</h1>
 
                             <label for="Username"><b>Username</b></label>
-                            <input id='getUserID' type="text" placeholder="Enter Username" name="user" required>
+                            <input id='getUserID' type="text" placeholder="Enter Username" name="user">
 
                             <label for="psw"><b>Password</b></label>
-                            <input id='psw' type="password" placeholder="Enter Password" name="psw" required>
+                            <input id='psw' type="password" placeholder="Enter Password" name="psw">
 
                             <button type="submit" id='loginbtn' class="btn">Login</button>
                             <button type="submit" class="btn cancel" @click="closeForm">Close</button>

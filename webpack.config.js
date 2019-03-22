@@ -6,9 +6,11 @@ var bF = path.resolve(__dirname, "build");
 
 var config = {
     entry: {
-        "main": jF + "/main.js",
-        "list_webpack": jF +"/list_webpack",
+        "login": jF + "/login.js",
+        "list": jF +"/list.js",
         "cart": jF + "/cart.js",
+        "search": jF + "/search.js",
+        "book": jF + "/book.js",
     },
     output: {
         filename: "[name]bundle.js",

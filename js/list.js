@@ -1,4 +1,4 @@
-$(document).ready(()=>{
+$(document).ready(() => {
     console.log("list.js has been loaded")
     let vm = new Vue({
         el: '#app',
@@ -12,7 +12,7 @@ $(document).ready(()=>{
             xhttp.onreadystatechange = () => {
                 if (xhttp.readyState == 4 && xhttp.status == 200) {
                     this.books = JSON.parse(xhttp.response);
-    
+
                     if (Object.keys(this.books).length > 0) {
                         this.failure = false;
                     } else {
@@ -23,6 +23,24 @@ $(document).ready(()=>{
             xhttp.open('POST', '/load_list', true);
             xhttp.setRequestHeader("Content-type", "text");
             xhttp.send("load");
+
+            $.ajax({
+                url: "/checkSession",
+                type: "POST",
+                data: {
+                    status: "success"
+                },
+                success: (data) => {
+                    //check if user is logged in              
+                    if (data.status === "failed") {
+                        document.getElementById("checkout").style.display = "none";
+                    }
+                },
+                error: function (data) {
+                    console.log('An error occurred. checkOUT in cart.js');
+                    console.log(data);
+                },
+            })
         },
         methods: {
             // view more information on a book
@@ -50,31 +68,29 @@ $(document).ready(()=>{
             addBooktoCart: (book) => {
                 console.log("adding " + book + "to backend")
                 console.log("adding to cart user session")
-    
-                window.$.ajax({
+
+                $.ajax({
                     url: "/addBookToCart",
                     type: "POST",
                     data: {
                         status: "success",
-                        info: book
+                        book: book
                     },
                     success: (data) => {
-                        if (data.status === "success") {
-                            // let cleanNode = document.getElementById("userLogin");
-                            // while (cleanNode.lastChild) {
-                            //     cleanNode.removeChild(cleanNode.lastChild);
-                            // }
-                            // let newDiv = document.createElement('h3');
-                            // newDiv.innerText = "Welcome " + data.name;
-    
-                            // document.getElementById("userLogin").appendChild(newDiv);
-                        } else if (data.status === "failed") {
+                        if (data.status === "failed") {
                             document.getElementById("myForm").style.display = "block";
+                        } else {
+                            window.alert("You book was successfully added to the cart")
                         }
                     }
                 })
             },
+            cart: () => {
+                window.location.href = "/cart.html";
+                console.log("going to Cart Page");
+                
+            },
         }
     })
-    
+
 })

@@ -9,13 +9,13 @@
 
     <!-- <link rel="stylesheet" href="../css/header.css"> -->
     <!-- <link rel="stylesheet" href="../css/searchbar.css"> -->
-    <link rel="stylesheet" href="../css/login.css">
+    <link rel="stylesheet" href="styles/login.css">
     <!-- <link rel="stylesheet" href="../css/common.css"> -->
-    <link rel="stylesheet" href="../css/list.css">
+    <link rel="stylesheet" href="styles/list.css">
 
 
 
-    <script src="scripts/mainbundle.js"></script>
+    <script src="scripts/loginbundle.js"></script>
     <script src="scripts/cartbundle.js"></script>
 
 
@@ -40,10 +40,10 @@
                         <h1>Login</h1>
 
                         <label for="Username"><b>Username</b></label>
-                        <input id='getUserID' type="text" placeholder="Enter Username" name="user" required>
+                        <input id='getUserID' type="text" placeholder="Enter Username" name="user">
 
                         <label for="psw"><b>Password</b></label>
-                        <input id='psw' type="password" placeholder="Enter Password" name="psw" required>
+                        <input id='psw' type="password" placeholder="Enter Password" name="psw">
 
                         <button type="submit" id='loginbtn' class="btn">Login</button>
                         <button type="submit" class="btn cancel" @click="closeForm">Close</button>
