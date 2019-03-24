@@ -2,6 +2,7 @@ $(document).ready(() => {
     new Vue({
         el: '#app',
         data: {
+            
             bookInfo: {},
             recommendedBooks: {},
         },
@@ -12,6 +13,7 @@ $(document).ready(() => {
             xhttp.onreadystatechange = () => {
                 if (xhttp.readyState == 4 && xhttp.status == 200) {
                     this.bookInfo = JSON.parse(xhttp.response);
+                    console.log(this.bookInfo)
                 }
             }
 
@@ -29,6 +31,8 @@ $(document).ready(() => {
             xhttpRecommend.open("POST", "/recommendedBooks");
             xhttpRecommend.setRequestHeader("Content-type", "text");
             xhttpRecommend.send("load");
+
+            
         },
 
         methods: {

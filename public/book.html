@@ -42,11 +42,7 @@
             </div>
         </header>
 
-        <div id="checkout">
-            <button @click="checkOut">
-                Cart
-            </button>
-        </div>
+        
 
         <div id="center">
             <div id='bookcover'>
@@ -68,7 +64,7 @@
             </div>
             <div id="list_buttons_div">
                 <a href="./list.html"><button class="list_buttons">Back</button></a>
-                <button @click="addBooktoCart(book)" class="list_buttons">Add To Cart</button>
+                <button @click="addBooktoCart(bookInfo.details)" class="list_buttons">Add To Cart</button>
             </div>
         </div>
 

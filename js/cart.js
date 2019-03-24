@@ -8,6 +8,7 @@ $(document).ready(() => {
                 cart: {}
             },
             failure: true,
+            total_price: 0,
         },
         // function to run an ajax call to the server to receive information on books to load
         created: function () {
@@ -23,9 +24,14 @@ $(document).ready(() => {
                     } else {
                         failture = false;
                         //write your cart was empty
-                    }                                
+                    }           
+                    this.books.forEach(element => {
+                        this.total_price += parseInt(element.book_price);
+                    });                     
                 },                      
-            })           
+            })    
+            
+            
         },        
     })
 })
