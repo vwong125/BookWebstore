@@ -9,13 +9,14 @@
 
     <!-- <link rel="stylesheet" href="../css/header.css"> -->
     <!-- <link rel="stylesheet" href="../css/searchbar.css"> -->
-    <link rel="stylesheet" href="../css/login.css">
+    <link rel="stylesheet" href="styles/login.css">
     <!-- <link rel="stylesheet" href="../css/common.css"> -->
-    <link rel="stylesheet" href="../css/list.css">
+    <link rel="stylesheet" href="styles/list.css">
+    <link rel="stylesheet" href="styles/cart.css">
 
 
 
-    <script src="scripts/mainbundle.js"></script>
+    <script src="scripts/loginbundle.js"></script>
     <script src="scripts/cartbundle.js"></script>
 
 
@@ -27,10 +28,9 @@
         <header class="header">
             <h1 class="logo"><a href="search.html">Your Cart</a></h1>
             <ul class="main-nav">
-                <li><a href="/search">Home</a></li>
+                <li><a href="/search.html">Home</a></li>
                 <li><a href="#">About</a></li>
-                <li><a href="#">Username</a></li>
-                <li><a href="#">Library</a></li>
+
             </ul>
             <div class='user' id='userLogin'>
                 <button id='loginpopup' type="button" @click="openForm">Login</button>
@@ -40,10 +40,10 @@
                         <h1>Login</h1>
 
                         <label for="Username"><b>Username</b></label>
-                        <input id='getUserID' type="text" placeholder="Enter Username" name="user" required>
+                        <input id='getUserID' type="text" placeholder="Enter Username" name="user">
 
                         <label for="psw"><b>Password</b></label>
-                        <input id='psw' type="password" placeholder="Enter Password" name="psw" required>
+                        <input id='psw' type="password" placeholder="Enter Password" name="psw">
 
                         <button type="submit" id='loginbtn' class="btn">Login</button>
                         <button type="submit" class="btn cancel" @click="closeForm">Close</button>
@@ -52,29 +52,28 @@
             </div>
         </header>
 
-
-        <!-- <p id="failure" v-if="failure" v-for="book in books">hello: {{book}}</p> -->
-
-        
-
         <div id='information'>
             <div class="book" v-for="book in books">
                 <div class="book_img">
                     <img src="{{book.book_picture}}" alt="book_img" width="300" height="450">
                 </div>
-    
+
                 <div class="infobk">
                     <h1 id="title">{{book.book_title}}</h1>
-                    <h3 id="author">Author: {{book.book_author}}</h3>                    
+                    <h3 id="author">Author: {{book.book_author}}</h3>
                     <h3 id="price">Price: ${{book.book_price}} USD</h3>
                 </div>
             </div>
         </div>
 
+        <div id='totalprice'>
+            <h2>Total price: {{total_price}}</h2>
+        </div>
+
     </div>
 
 
-    
+
 
 </body>
 

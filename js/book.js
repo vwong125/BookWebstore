@@ -2,6 +2,7 @@ $(document).ready(() => {
     new Vue({
         el: '#app',
         data: {
+            
             bookInfo: {},
             recommendedBooks: {},
         },
@@ -12,25 +13,28 @@ $(document).ready(() => {
             xhttp.onreadystatechange = () => {
                 if (xhttp.readyState == 4 && xhttp.status == 200) {
                     this.bookInfo = JSON.parse(xhttp.response);
+                    console.log(this.bookInfo)
                 }
             }
-    
+
             xhttp.open('POST', "/moreBookInfo", true);
             xhttp.setRequestHeader("Content-type", "text");
             xhttp.send("load");
-    
+
             var xhttpRecommend = new XMLHttpRequest();
             xhttpRecommend.onreadystatechange = () => {
                 if (xhttpRecommend.readyState == 4 && xhttpRecommend.status == 200) {
                     this.recommendedBooks = JSON.parse(xhttpRecommend.response);
                 }
             }
-    
+
             xhttpRecommend.open("POST", "/recommendedBooks");
             xhttpRecommend.setRequestHeader("Content-type", "text");
             xhttpRecommend.send("load");
+
+            
         },
-    
+
         methods: {
             // method to go view other book information
             moreInfo: function (book_name) {
@@ -54,29 +58,25 @@ $(document).ready(() => {
             closeform: () => {
                 document.getElementById("myForm").style.display = "none";
             },
-            addBooktoCart: () => {
+            addBooktoCart: (book) => {
+                console.log("adding " + book + "to backend")
                 console.log("adding to cart user session")
-                // $.ajax({
-                //     url: "/addBookToCart",
-                //     type: "POST",
-                //     data: {
-                //         type: "addingBookToCart",
-                //         book: document.getElementById("getUserID").value,
-                //         psw: document.getElementById("psw").value
-                //     },
-                //     success: (data) => {
-                //         if (data.status === "success") {
-                //             // let cleanNode = document.getElementById("userLogin");
-                //             // while (cleanNode.lastChild) {
-                //             //     cleanNode.removeChild(cleanNode.lastChild);
-                //             // }
-                //             // let newDiv = document.createElement('h3');
-                //             // newDiv.innerText = "Welcome " + data.name;
-    
-                //             // document.getElementById("userLogin").appendChild(newDiv);
-                //         }
-                //     }
-                // })
+
+                $.ajax({
+                    url: "/addBookToCart",
+                    type: "POST",
+                    data: {
+                        status: "success",
+                        book: book
+                    },
+                    success: (data) => {
+                        if (data.status === "failed") {
+                            document.getElementById("myForm").style.display = "block";
+                        } else {
+                            window.alert("You book was successfully added to the cart")
+                        }
+                    }
+                })
             },
         },
         error: function (data) {

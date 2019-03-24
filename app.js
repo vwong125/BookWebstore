@@ -16,9 +16,9 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 
 // set static folder
-app.use(express.static(path.join(__dirname)));
 //provide pathing scripts for client
 app.use("/scripts", express.static("build"));
+app.use("/styles", express.static("css"));
 
 // used to extract data from client
 app.use(express.json());
@@ -76,6 +76,8 @@ app.get("/book.html", (req, res) => {
 app.get("/cart.html", (req, res) => {
     if (req.session.username) {
         res.sendFile(path.join(__dirname, "/public/cart.html"));
+    }else{
+        res.send("Error 404 Page not found")
     }
 });
 
@@ -292,9 +294,11 @@ app.post("/userInfo", (req, res) => {
         connection.query(mysqlStatement, (error, results, fields) => {
             if (error) {
                 return console.error(error.message);
+                // res.send({status: "failed"})
             }
-            // console.log(!results);
-            if (!results) {
+            // console.log(results);
+            // console.log(fields)
+            if (results[0] == null || results[0] == undefined) {
                 console.log("..hellow" + results + "...no match")
                 res.send({ status: "failed" });
             } else {

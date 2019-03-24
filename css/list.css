@@ -171,3 +171,7 @@ h2, h3, a {
 ::-webkit-scrollbar {
     display: none;
 }
+
+#totalprice{
+    order: 3;
+}
