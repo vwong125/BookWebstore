@@ -9,6 +9,7 @@ var config = {
         "main": jF + "/main.js",
         "list_webpack": jF +"/list_webpack",
         "cart": jF + "/cart.js",
+        "book": jF + "/book.js",
     },
     output: {
         filename: "[name]bundle.js",

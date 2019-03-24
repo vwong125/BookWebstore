@@ -118,7 +118,10 @@ app.post("/search", function (req, res) {
 
         // pool query to run the search_books_query
         pool.query(search_books_query, (err, result) => {
-            if (err) throw err;
+            if (err) {
+                reject();
+                throw err;
+            }
 
             // if the query finds an object, then set the books variable to this result
             if (result.length != 0) {
@@ -178,6 +181,10 @@ app.post("/search", function (req, res) {
         req.session.searchQuery = JSON.stringify(books);
         res.send("success");
     })
+
+    promise.catch(() => {
+        console.log("Error");
+    })
 });
 
 // post request for /load_list url on the list page. Send search results to client
@@ -203,10 +210,17 @@ app.post("/moreInfo", (req, res) => {
 
         let detailsPromise = new Promise((resolve, reject) => {
             pool.query(bookInformationQuery, (err, result) => {
-                if (err) throw err;
+                if (err) {
+                    reject();
+                    throw err;
+                }
                 book_information.details = result[0];
                 resolve();
             });
+        })
+
+        detailsPromise.catch(() => {
+            console.log("error");
         })
 
         detailsPromise.then(() => {
