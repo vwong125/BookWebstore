@@ -4,9 +4,10 @@
 <head>
     <title>Bookstoredb</title>
     
-    <link rel="stylesheet" href="../css/search.css">
-    <script src="scripts/mainbundle.js"></script>
-    <link rel="stylesheet" href="../css/login.css">
+    <link rel="stylesheet" href="styles/search.css">
+    <script src="scripts/loginbundle.js"></script>
+    <script src="scripts/searchbundle.js"></script>
+    <link rel="stylesheet" href="styles/login.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/1.0.18/vue.min.js"></script>
 </head>
 
@@ -16,10 +17,9 @@
             <header class="header">
                 <h1 class="logo"><a href="#">Bookstore DB</a></h1>
                 <ul class="main-nav">
-                    <li><a href="#">Home</a></li>
+                    <li><a href="/search.html">Home</a></li>
                     <li><a href="#">About</a></li>
-                    <li><a href="#">Username</a></li>
-                    <li><a href="#">Library</a></li>                   
+                    <li id="checkout"><a href="/cart.html">Cart</a></li>                   
 
                 </ul>
 
@@ -31,10 +31,10 @@
                             <h1>Login</h1>
 
                             <label for="Username"><b>Username</b></label>
-                            <input id='getUserID' type="text" placeholder="Enter Username" name="user" required>
+                            <input id='getUserID' type="text" placeholder="Enter Username" name="user">
 
                             <label for="psw"><b>Password</b></label>
-                            <input id='psw' type="password" placeholder="Enter Password" name="psw" required>
+                            <input id='psw' type="password" placeholder="Enter Password" name="psw">
 
                             <button type="submit" id='loginbtn' class="btn">Login</button>
                             <button type="submit" class="btn cancel" @click="closeForm">Close</button>
@@ -57,8 +57,6 @@
             </div>
         </div>
     </div>
-
-    <script src="../js/search.js"></script>
 
 </body>
 

@@ -2,82 +2,74 @@
 <html>
 
 <head>
-    <!-- <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge"> -->
     <title>Book Page</title>
-    <!-- <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
-    <script src="main.js"></script> -->
-    <link rel="stylesheet" href="../css/book.css">
+    <link rel="stylesheet" href="styles/book.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/1.0.18/vue.min.js"></script>
-    <script src="scripts/mainbundle.js"></script>
-    <link rel="stylesheet" href="../css/login.css">
+    <script src="scripts/loginbundle.js"></script>
+    <script src="scripts/bookbundle.js"></script>
+    <link rel="stylesheet" href="styles/login.css">
 </head>
 
 <body>
 
-    <div id="app">
-        <div class="app">
-            <header class="header">
-                <h1 class="logo"><a href="search.html">Book Page</a></h1>
-                <ul class="main-nav">
-                    <li><a href="/search.html">Home</a></li>
-                    <li><a href="#">About</a></li>
-                    <li><a href="#">Username</a></li>
-                    <li><a href="#">Library</a></li>
-                </ul>
+    <div id="app" class="app">
 
-                <div class='user' id='userLogin'>
-                    <button id='loginpopup' type="button" @click="openForm">Login</button>
+        <header class="header">
+            <h1 class="logo"><a href="search.html">Book Page</a></h1>
+            <ul class="main-nav">
+                <li><a href="/search.html">Home</a></li>
+                <li><a href="#">About</a></li>
+                <li id="checkout"><a href="/cart.html">Cart</a></li>
+            </ul>
 
-                    <div class="form-popup" id="myForm">
-                        <form class="form-container" id="userInfoForm">
-                            <h1>Login</h1>
+            <div class='user' id='userLogin'>
+                <button id='loginpopup' type="button" @click="openForm">Login</button>
 
-                            <label for="Username"><b>Username</b></label>
-                            <input id='getUserID' type="text" placeholder="Enter Username" name="user" required>
+                <div class="form-popup" id="myForm">
+                    <form class="form-container" id="userInfoForm">
+                        <h1>Login</h1>
 
-                            <label for="psw"><b>Password</b></label>
-                            <input id='psw' type="password" placeholder="Enter Password" name="psw" required>
+                        <label for="Username"><b>Username</b></label>
+                        <input id='getUserID' type="text" placeholder="Enter Username" name="user">
 
-                            <button type="submit" id='loginbtn' class="btn">Login</button>
-                            <button type="submit" class="btn cancel" @click="closeForm">Close</button>
-                        </form>
-                    </div>
-                </div>
-            </header>
+                        <label for="psw"><b>Password</b></label>
+                        <input id='psw' type="password" placeholder="Enter Password" name="psw">
 
-            <div id="checkout">
-                    <button @click="checkOut">
-                        Cart
-                    </button>
-                </div>
-
-            <div id="center">
-                <div id='bookcover'>
-                    <img src="{{bookInfo.details.book_picture}}" alt="Book Image" width="300" height="450">
-                </div>
-
-                <div id='bookInfo'>
-                    <h1 id='title'>{{ bookInfo.details.book_title }}</h1>
-                    <h3 id='author'>Author: {{ bookInfo.details.book_author }}</h3>
-                    <h4 id='tags'>
-                        Tags:
-                        <span v-for="tag in bookInfo.tags">
-                            {{ tag.tag_name }}
-                        </span>
-                    </h4>
-                    <P class='bookInfoPara'>
-                        {{bookInfo.details.book_description}}
-                    </P>
+                        <button type="submit" id='loginbtn' class="btn">Login</button>
+                        <button type="submit" class="btn cancel" @click="closeForm">Close</button>
+                    </form>
                 </div>
             </div>
+        </header>
 
+        
+
+        <div id="center">
+            <div id='bookcover'>
+                <img src="{{bookInfo.details.book_picture}}" alt="Book Image" width="300" height="450">
+            </div>
+
+            <div id='bookInfo'>
+                <h1 id='title'>{{ bookInfo.details.book_title }}</h1>
+                <h3 id='author'>Author: {{ bookInfo.details.book_author }}</h3>
+                <h4 id='tags'>
+                    Tags:
+                    <span v-for="tag in bookInfo.tags">
+                        {{ tag.tag_name }}
+                    </span>
+                </h4>
+                <P class='bookInfoPara'>
+                    {{bookInfo.details.book_description}}
+                </P>
+            </div>
             <div id="list_buttons_div">
                 <a href="./list.html"><button class="list_buttons">Back</button></a>
-                <button class="list_buttons">Add To Cart</button>
+                <button @click="addBooktoCart(bookInfo.details)" class="list_buttons">Add To Cart</button>
             </div>
         </div>
+
+        
+
 
         <div class="after_center">
             <div class="title">
@@ -99,7 +91,6 @@
         </div>
     </div>
 
-    <script src="../js/book.js"></script>
 </body>
 
 </html>
