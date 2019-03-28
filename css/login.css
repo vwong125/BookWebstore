@@ -68,12 +68,12 @@
 
 .user{
   margin-right: 30px;
-  color:  #34495e;
+  color:  #aaadc4;
 }
 
 #loginpopup{
-  background-color:  #f4f4f4;
-  color:rgb(52, 73, 94);
+  background-color:  #403939;
+  color: antiquewhite;
   border: none;
   cursor: pointer;
   opacity: 0.8;
