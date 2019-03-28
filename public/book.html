@@ -8,6 +8,7 @@
     <script src="scripts/loginbundle.js"></script>
     <script src="scripts/bookbundle.js"></script>
     <link rel="stylesheet" href="styles/login.css">
+    <link rel="stylesheet" href="styles/header.css">
 </head>
 
 <body>
@@ -34,11 +35,22 @@
 
                         <label for="psw"><b>Password</b></label>
                         <input id='psw' type="password" placeholder="Enter Password" name="psw">
+                    </form>
+                </div>
+            </div>
+        </header>
+
+
+        <div id=book-background>
+            <div id="center">
+                <div id='bookcover'>
+                    <img id="book-img" src="{{bookInfo.details.book_picture}}" alt="Book Image" width="300" height="450">
+                </div>
 
                 <div id='bookInfo'>
                     <h1 id='title'>{{ bookInfo.details.book_title }}</h1>
                     <h3 id='author'>Author: {{ bookInfo.details.book_author }}</h3>
-                    <h3 id='price'>Price: ${{ bookInfo.details.book_price }}.00</h3>
+                    <h3 id="price">Price: ${{ bookInfo.details.book_price }}.00</h3>
                     <h4 id='tags'>
                         Tags:
                         <span v-for="tag in bookInfo.tags">
@@ -48,59 +60,33 @@
                     <P class='bookInfoPara'>
                         {{bookInfo.details.book_description}}
                     </P>
-                        <button type="submit" id='loginbtn' class="btn">Login</button>
-                        <button type="submit" class="btn cancel" @click="closeForm">Close</button>
-                    </form>
-                </div>
-            </div>
-        </header>
 
-        
-
-        <div id="center">
-            <div id='bookcover'>
-                <img src="{{bookInfo.details.book_picture}}" alt="Book Image" width="300" height="450">
-            </div>
-
-            <div id='bookInfo'>
-                <h1 id='title'>{{ bookInfo.details.book_title }}</h1>
-                <h3 id='author'>Author: {{ bookInfo.details.book_author }}</h3>
-                <h4 id='tags'>
-                    Tags:
-                    <span v-for="tag in bookInfo.tags">
-                        {{ tag.tag_name }}
-                    </span>
-                </h4>
-                <P class='bookInfoPara'>
-                    {{bookInfo.details.book_description}}
-                </P>
-            </div>
-            <div id="list_buttons_div">
-                <a href="./list.html"><button class="list_buttons">Back</button></a>
-                <button @click="addBooktoCart(bookInfo.details)" class="list_buttons">Add To Cart</button>
-            </div>
-        </div>
-
-        
-
-
-        <div class="after_center">
-            <div class="title">
-                <h1>Recommended Titles</h1>
-            </div>
-
-            <section class="recommend">
-                <div class="bookitem" v-for="book in recommendedBooks">
-                    <div class='bkImg'>
-                        <img class='bkImgTag' @click="moreInfo(book.book_title)" src="{{book.book_picture}}" alt="book"
-                            width="250" height="400">
-                    </div>
-
-                    <div class='bkTitle'>
-                        <p class='bkTitlePara'>{{book.book_title}}</p>
+                    <div id="list_buttons_div">
+                        <a href="./list.html"><button class="list_buttons">Back</button></a>
+                        <button @click="addBooktoCart(bookInfo.details)" class="list_buttons">Add To Cart</button>
                     </div>
                 </div>
-            </section>
+            </div>
+
+            <div class="after_center">
+                <div class="title">
+                    <h1>Recommended Titles</h1>
+                </div>
+
+                <section class="recommend">
+                    <div class="bookitem" v-for="book in recommendedBooks">
+                        <div class='bkImg'>
+                            <img class='bkImgTag' @click="moreInfo(book.book_title)" src="{{book.book_picture}}"
+                                alt="book" width="250" height="400">
+                        </div>
+
+                        <div class='bkTitle'>
+                            <p class='bkTitlePara'>{{book.book_title}}</p>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
         </div>
     </div>
 

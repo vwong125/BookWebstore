@@ -19,6 +19,7 @@ const PORT = process.env.PORT || 3000;
 //provide pathing scripts for client
 app.use("/scripts", express.static("build"));
 app.use("/styles", express.static("css"));
+app.use("/img", express.static("images"));
 
 // used to extract data from client
 app.use(express.json());

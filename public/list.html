@@ -8,55 +8,50 @@
     <!-- <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
     <script src="main.js"></script> -->
-    <link rel="stylesheet" href="styles/list.css">
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/1.0.18/vue.min.js"></script>
 
     <script src="scripts/loginbundle.js"></script>
     <script src="scripts/listbundle.js"></script>
 
     <link rel="stylesheet" href="styles/login.css">
+    <link rel="stylesheet" href="styles/header.css">
+    <link rel="stylesheet" href="styles/list.css">
 
 </head>
 
 <body>
+
     <div id="app">
-        <div class="app">
-            <header class="header">
-                <h1 class="logo"><a href="search.html">List Page</a></h1>
-                <ul class="main-nav">
-                    <li><a href="/search.html">Home</a></li>
-                    <li><a href="#">About</a></li>
-                    <li id="checkout"><a href="/cart.html">Cart</a></li>                    
+        <header class="header">
+            <h1 class="logo"><a href="search.html">List Page</a></h1>
+            <ul class="main-nav">
+                <li><a href="/search.html">Home</a></li>
+                <li><a href="#">About</a></li>
+                <li id="checkout"><a href="/cart.html">Cart</a></li>
 
-                </ul>
-                <div class='user' id='userLogin'>
-                    <button id='loginpopup' type="button" @click="openForm">Login</button>
+            </ul>
+            <div class='user' id='userLogin'>
+                <button id='loginpopup' type="button" @click="openForm">Login</button>
 
-                    <div class="form-popup" id="myForm">
-                        <form class="form-container" id="userInfoForm">
-                            <h1>Login</h1>
+                <div class="form-popup" id="myForm">
+                    <form class="form-container" id="userInfoForm">
+                        <h1>Login</h1>
 
-                            <label for="Username"><b>Username</b></label>
-                            <input id='getUserID' type="text" placeholder="Enter Username" name="user">
+                        <label for="Username"><b>Username</b></label>
+                        <input id='getUserID' type="text" placeholder="Enter Username" name="user">
 
-                            <label for="psw"><b>Password</b></label>
-                            <input id='psw' type="password" placeholder="Enter Password" name="psw">
+                        <label for="psw"><b>Password</b></label>
+                        <input id='psw' type="password" placeholder="Enter Password" name="psw">
 
-                            <button type="submit" id='loginbtn' class="btn">Login</button>
-                            <button type="submit" class="btn cancel" @click="closeForm">Close</button>
-                        </form>
-                    </div>
+                        <button type="submit" id='loginbtn' class="btn">Login</button>
+                        <button type="submit" class="btn cancel" @click="closeForm">Close</button>
+                    </form>
                 </div>
-            </header>
-
-
-        </div>
-
-
+            </div>
+        </header>
 
         <p id="failure" v-if="failure">No Results Found....Please Search Again</p>
-
-        
 
         <div id='information'>
             <div class="book" v-for="book in books">
@@ -74,17 +69,21 @@
                         </div>
 
                         <div id="list_buttons_div">
-                            <button @click="moreInfo(book.book_title)" class="list_buttons">More Information</button>
+                            <button @click="moreInfo(book.book_title)" class="list_buttons">More
+                                Information</button>
                             <button class="list_buttons">Add To Cart</button>
                         </div>
-
                 </div>
             </div>
         </div>
+    </div>
 
 
 
-        <!-- <script src="../js/list.js"></script> -->
+
+
+
+    <!-- <script src="../js/list.js"></script> -->
 </body>
 
 </html>
