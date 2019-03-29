@@ -22,6 +22,7 @@ $(document).ready(() => {
                         this.failure = false;
                     } else {
                         this.failure = true;
+                        
                     }
                     this.books.forEach(element => {
                         this.total_price.amount += parseInt(element.book_price);
@@ -53,10 +54,13 @@ $(document).ready(() => {
                                     } 
                                 },
                             })
-                            if (Object.keys(vmCart.books).length > 0) {
+                            // console.log(Object.keys(vmCart.books).length)
+                            // console.log(vmCart.books.length)
+
+                            if (Object.keys(vmCart.books).length - 1 > 0) {
                                 vmCart.failure = false;
                             } else {
-                                vmCart.failure = true;
+                                location.reload();
                             }
                             vmCart.total_price.amount -= parseInt(book.book_price);
                         } else {
