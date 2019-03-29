@@ -60,19 +60,20 @@
                 </div>
 
                 <div class="infobk">
-                    <h2 id="title">{{book.book_title}}</h1>
-                        <h3 id="author">Author: {{book.book_author}}</h3>
-                        <h3 id="price">Price: ${{ book.book_price }}.00</h3>
-                        <h3 id="tags">Tags: {{book.tag_name}}</h3>
-                        <div id="book_info_block">
-                            <h4 id="Description">Description: {{ book.book_description }}</h3>
-                        </div>
+                    <h1 id="title">{{book.book_title}}</h1>
+                    <h3 id="author">Author: {{book.book_author}}</h3>
+                    <h3 id="price">Price: ${{ book.book_price }}.00</h3>
+                    <h3 id="tags">Tags: {{book.tag_name}}</h3>
+                    <div id="book_info_block">
+                        <h4 id="Description">Description: {{ book.book_description }}</h3>
+                    </div>
 
-                        <div id="list_buttons_div">
-                            <button @click="moreInfo(book.book_title)" class="list_buttons">More
-                                Information</button>
-                            <button class="list_buttons">Add To Cart</button>
-                        </div>
+                    <div id="list_buttons_div">
+                        <button @click="moreInfo(book.book_title)" class="list_buttons">More Information</button>
+                        <button @click="addBooktoCart(book)" class="list_buttons">Add To Cart</button>                       
+
+                    </div>
+
                 </div>
             </div>
         </div>
@@ -82,8 +83,6 @@
 
 
 
-
-    <!-- <script src="../js/list.js"></script> -->
 </body>
 
 </html>
