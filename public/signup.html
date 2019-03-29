@@ -4,37 +4,67 @@
 <head>
     <title>Sign Up</title>
     <link rel="stylesheet" href="styles/header.css">
+    <link rel="stylesheet" href="styles/login.css">
+    <link rel="stylesheet" href="styles/signup.css">
+
+    <script src="scripts/signupbundle.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/1.0.18/vue.min.js"></script>
 </head>
 
 <body>
-
     <div id="app" class="app">
-            <header class="header">
-                    <h1 class="logo"><a href="search.html">Book Page</a></h1>
-                    <ul class="main-nav">
-                        <li><a href="/search.html">Home</a></li>
-                        <li><a href="#">About</a></li>
-                        <li id="checkout"><a href="/cart.html">Cart</a></li>
-                    </ul>
+
+        <header class="header">
+            <h1 class="logo"><a href="search.html">Book Page</a></h1>
+            <ul class="main-nav">
+                <li><a href="/search.html">Home</a></li>
+                <li><a href="#">About</a></li>
+                <li id="checkout"><a href="/cart.html">Cart</a></li>
+                <li><a href="/signup.html">Sign Up</a></li>
+            </ul>
+
+            <div class='user' id='userLogin'>
+                <button id='loginpopup' type="button" @click="openForm">Login</button>
+
+                <div class="form-popup" id="myForm">
+                    <form class="form-container" id="userInfoForm">
+                        <h1>Login</h1>
+
+                        <label for="Username"><b>Username</b></label>
+                        <input id='getUserID' type="text" placeholder="Enter Username" name="user">
+
+                        <label for="psw"><b>Password</b></label>
+                        <input id='psw' type="password" placeholder="Enter Password" name="psw">
+                    </form>
+                </div>
+            </div>
+        </header>
+
+        <div id="signupform">
+            <form class="form-container-sign-up">
+                <h1>Sign Up</h1>
+
+                <input v-model="firstname" id='getFirstName' type="text" placeholder="Enter First Name" name="user" required>
+
+                <input v-model="lastname" id='getLastName' type="text" placeholder="Enter Last Name" name="user" required>
+   
+                <input v-model="username" id='getUsername' type="text" placeholder="Enter Username" name="user" required>
+
+
+                <input v-model="password" class='password' type="password" placeholder="Enter Password" name="psw" required>
+
         
-                    
-                </header>
+                <input v-model="retypedPassword" class='password' type="password" placeholder="Retype Password" name="psw-retype" required>
 
-        <div id="createUser">
-                <form action="/createUser"></form>
+            </form>
 
+            <button id='signupbtn' @click="signUp">Sign Up</button>
+
+            <p>{{username}}</p>
+            <p>{{password}}</p>
+            <p>{{retypedPassword}}</p>
         </div>
 
-        
-
-
-
-        
-
-
-
-
-        
     </div>
 
 </body>

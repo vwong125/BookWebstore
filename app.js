@@ -82,6 +82,11 @@ app.get("/cart.html", (req, res) => {
     }
 });
 
+//signup page
+app.get("/signup.html", (req, res) => {
+    res.sendFile(path.join(__dirname, "/public/signup.html"));
+})
+
 // post request from the client 
 app.post("/featureBook", (req, res) => {
 
@@ -438,6 +443,22 @@ app.post("/removeBookFromCart", (req, res) => {
         //     name: req.session.username,
         // })
     }
+})
+
+app.post("/signUp", (req, res) => {
+
+    let check_username_query = "INSERT INTO users VALUES (?, ?, ?, ?);";
+    
+    pool.query(check_username_query, [req.body.username, req.body.firstname, req.body.lastname, req.body.password],
+    (error, results, fields) => {
+        if (error) {
+            res.send("failed");
+        } else {
+            res.send("success");
+        }
+    })
+
+
 })
 
 // port to host the server
