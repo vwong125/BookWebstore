@@ -363,7 +363,7 @@ app.post("/getCart", (req, res) => {
                 res.send({ status: "failed" });
             } else {
                 console.log("Server sending sqL CART data to client")
-                // console.log(results)
+                console.log(results)
                 res.send(
                     {
                     status: "success",
@@ -372,11 +372,11 @@ app.post("/getCart", (req, res) => {
                 );
             }
         })
-        if (success) {
-            console.log("Books received from cart");
-        } else {
-            console.log("Books NOT received from cart");
-        }
+        // if (success) {
+        //     console.log("Books received from cart");
+        // } else {
+        //     console.log("Books NOT received from cart");
+        // }
 
         // console.log(mysqlStatement);
 
@@ -386,6 +386,42 @@ app.post("/getCart", (req, res) => {
             status: "failed",
             name: req.session.username,
         })
+    }
+})
+
+app.post("/removeBookFromCart", (req, res) => {
+    //Check session tokens
+    if (req.session.username) {
+        
+        let username = req.session.username;
+        console.log("Deleting " + username + "..." + req.body.book.book_id)
+
+
+        let mysqlStatement = `DELETE FROM cart WHERE username = "${username}" AND book_id = ${req.body.book.book_id};`;
+        
+
+        let success = connection.query(mysqlStatement, (error) => {
+            if (error) {
+                return console.error(error.message);
+            }
+        })
+        if (success) {
+            res.json({
+                status:"successful Delete"
+            })
+        } else {
+            res.json({
+                status:"failed Delete"
+            })
+        }      
+
+    } 
+    else {
+        console.log("Error removeBookFromCart, user is NOT logged in")
+        // res.json({
+        //     status: "failed",
+        //     name: req.session.username,
+        // })
     }
 })
 

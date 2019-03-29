@@ -11,7 +11,7 @@
     <!-- <link rel="stylesheet" href="../css/searchbar.css"> -->
     <link rel="stylesheet" href="styles/login.css">
     <!-- <link rel="stylesheet" href="../css/common.css"> -->
-    <link rel="stylesheet" href="styles/list.css">
+    <!-- <link rel="stylesheet" href="styles/list.css"> -->
     <link rel="stylesheet" href="styles/cart.css">
 
 
@@ -52,22 +52,35 @@
             </div>
         </header>
 
+        <p id="failure" v-if="failure">Your Cart Is Empty</p>
+
         <div id='information'>
             <div class="book" v-for="book in books">
                 <div class="book_img">
                     <img src="{{book.book_picture}}" alt="book_img" width="300" height="450">
                 </div>
 
-                <div class="infobk">
-                    <h1 id="title">{{book.book_title}}</h1>
-                    <h3 id="author">Author: {{book.book_author}}</h3>
-                    <h3 id="price">Price: ${{book.book_price}} USD</h3>
+                <div id='book_options'>
+                    <div class="infobk">
+                        <h1 id="title">{{book.book_title}}</h1>
+                        <h3 id="author">Author: {{book.book_author}}</h3>
+                        <h3 id="price">Price: ${{book.book_price}} USD</h3>
+                    </div>
+    
+                    <div id = 'spacer'>
+
+                    </div>
+                    <div id="list_buttons_div">
+                        <button @click="removeBookFromCart(book)" class="list_buttons">Remove From Cart</button>
+                    </div>
+
                 </div>
+                
             </div>
         </div>
 
         <div id='totalprice'>
-            <h2>Total price: {{total_price}}</h2>
+            <h2>Total price: {{total_price.amount}}</h2>
         </div>
 
     </div>
