@@ -8,6 +8,7 @@
     <script src="scripts/loginbundle.js"></script>
     <script src="scripts/searchbundle.js"></script>
     <link rel="stylesheet" href="styles/login.css">
+    <link rel="stylesheet" href="styles/header.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/1.0.18/vue.min.js"></script>
 </head>
 
@@ -50,7 +51,7 @@
 
             <div class="recommend">
                 <div class="bookitem" v-for="book in featuredBooks">
-                    <img @click="moreInfo(book.book_title)" src="{{book.book_picture}}" alt="book" height="200px"
+                    <img id="bookimg" @click="moreInfo(book.book_title)" src="{{book.book_picture}}" alt="book" height="200px"
                         width="130px" style="margin:none">
                     <p id="booktitle">{{book.book_title}}</p>
                 </div>
