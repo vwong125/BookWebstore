@@ -421,6 +421,7 @@ app.post("/removeBookFromCart", (req, res) => {
             }
         })
         if (success) {
+            console.log("sucessful delete")
             res.json({
                 status:"successful Delete"
             })
