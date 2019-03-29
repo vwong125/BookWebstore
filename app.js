@@ -426,6 +426,7 @@ app.post("/removeBookFromCart", (req, res) => {
             }
         })
         if (success) {
+            console.log("sucessful delete")
             res.json({
                 status:"successful Delete"
             })
@@ -457,8 +458,19 @@ app.post("/signUp", (req, res) => {
             res.send("success");
         }
     })
+})
 
 
+app.post("/endSession", (req, res) => {
+    //Check session tokens
+    if (req.session.username) {        
+        req.session.destroy();
+        res.send({status:"success"})
+    } 
+    else {
+        console.log("Error removeBookFromCart, user is NOT logged in")
+        
+    }
 })
 
 // port to host the server

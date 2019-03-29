@@ -1,0 +1,59 @@
+html, body, #app {
+    height: 100%;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+#app {
+    background-image: url("/img/book_background4.jpg");
+    background-size: cover;
+}
+
+#signupform {
+    height: 80%;
+    width: 40%;
+    margin: 0 auto;
+    
+}
+
+  /* Full-width input fields */
+  .form-container-sign-up input[type=text], .form-container-sign-up input[type=password] {
+    width: 80%;
+    padding: 15px;
+    margin: 5px 0 22px 0;
+    border: none;
+  }
+  
+  /* When the inputs get focus, do something */
+  .form-container-sign-up input[type=text]:focus, .form-container-sign-up input[type=password]:focus {
+    outline: none;
+  }
+  
+
+  .form-container-sign-up input[type="text"], .form-container-sign-up input[type="password"] {
+      text-align: center;
+      display: block;
+      margin: auto;
+      margin-top: 20px;
+      margin-bottom: 20px;
+  }
+
+  #signupbtn {
+      display: block;
+      width: 100px;
+      height: 50px;
+      border-radius: 5px;
+      background-color: #403939;
+      color: antiquewhite;
+      margin: auto;
+      cursor: pointer;
+  }
+
+  h1 {
+      text-align: center;
+      margin-right: 0px;
+      margin-left: 0px;
+      border: none;
+      color: white;
+  }
+  

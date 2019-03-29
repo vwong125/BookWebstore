@@ -25,7 +25,7 @@
             </ul>
 
             <div class='user' id='userLogin'>
-                <button id='loginpopup' type="button" @click="openForm">Login</button>
+                <button class="logbuttons" id='loginpopup' type="button" @click="openForm">Login</button>
 
                 <div class="form-popup" id="myForm">
                     <form class="form-container" id="userInfoForm">
@@ -36,6 +36,9 @@
 
                         <label for="psw"><b>Password</b></label>
                         <input id='psw' type="password" placeholder="Enter Password" name="psw">
+
+                        <button type="submit" id='loginbtn' class="btn">Login</button>
+                        <button type="submit" class="btn cancel" @click="closeForm">Close</button>
                     </form>
                 </div>
             </div>
