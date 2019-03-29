@@ -48,10 +48,7 @@ $(document).ready(
                                 user: user,
                                 psw: psw
                             },
-                            success: (data) => {
-                                
-                                                          
-
+                            success: (data) => {  
                                 if (data.status === "success") {
                                     let cleanNode = document.getElementById("userLogin");
                                 while (cleanNode.lastChild) {
