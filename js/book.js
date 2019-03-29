@@ -13,7 +13,7 @@ $(document).ready(() => {
             xhttp.onreadystatechange = () => {
                 if (xhttp.readyState == 4 && xhttp.status == 200) {
                     this.bookInfo = JSON.parse(xhttp.response);
-                    console.log(this.bookInfo)
+                    // console.log(this.bookInfo)
                 }
             }
 
