@@ -11,6 +11,7 @@ var config = {
         "cart": jF + "/cart.js",
         "search": jF + "/search.js",
         "book": jF + "/book.js",
+        "signup": jF + "/signup.js",
     },
     output: {
         filename: "[name]bundle.js",
