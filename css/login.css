@@ -71,7 +71,7 @@
   color:  #aaadc4;
 }
 
-#loginpopup{
+.logbuttons{
   background-color:  #403939;
   color: antiquewhite;
   border: none;
@@ -81,7 +81,7 @@
   font-family: 'Montserrat', sans-serif;
 }
 
-#loginpopup:hover{
+.logbuttons:hover{
   color: #718daa;
   
 }

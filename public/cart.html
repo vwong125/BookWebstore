@@ -35,7 +35,7 @@
 
             </ul>
             <div class='user' id='userLogin'>
-                <button id='loginpopup' type="button" @click="openForm">Login</button>
+                <button class="logbuttons" id='loginpopup' type="button" @click="openForm">Login</button>
 
                 <div class="form-popup" id="myForm">
                     <form class="form-container" id="userInfoForm">
@@ -88,6 +88,8 @@
         <div id='totalprice'>
             <h2>Total price: {{total_price.amount}}.00</h2>
         </div>
+
+        <div id='checkout'></div>
 
     </div>
 

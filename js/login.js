@@ -1,11 +1,12 @@
 
+
 //check session variable
 $(document).ready(
     () => {
-        new Vue({
+        var logStuff = new Vue({
             el: '#userLogin',
             created: function () {
-                //check if session is available
+                // check if session is available
                 $.ajax({
                     url: "/checkSession",
                     type: "POST",
@@ -15,11 +16,18 @@ $(document).ready(
                             while (cleanNode.lastChild) {
                                 cleanNode.removeChild(cleanNode.lastChild);
                             }
-                            let newDiv = document.createElement('h3');
-                            newDiv.innerText = "Welcome " + data.name;
-
-                            document.getElementById("userLogin").appendChild(newDiv);
+                            
+                            let newName = document.createElement('h3');
+                            newName.innerText = "Welcome " + data.name;
+                            document.getElementById("userLogin").appendChild(newName);
                             document.getElementById("checkout").style.display = "block";
+
+                            let newlogOut = document.createElement('button');
+                            newlogOut.innerText = "Log Out";
+                            newlogOut.classList = "logbuttons";
+                            newlogOut.onclick = logout;
+                            document.getElementById("userLogin").appendChild(newlogOut);
+
                         }
                     },
                     error: function (data) {
@@ -48,13 +56,13 @@ $(document).ready(
                                 user: user,
                                 psw: psw
                             },
-                            success: (data) => {  
+                            success: (data) => {
                                 if (data.status === "success") {
                                     let cleanNode = document.getElementById("userLogin");
-                                while (cleanNode.lastChild) {
-                                    cleanNode.removeChild(cleanNode.lastChild);
-                                }
-                                let newDiv = document.createElement('h3');    
+                                    while (cleanNode.lastChild) {
+                                        cleanNode.removeChild(cleanNode.lastChild);
+                                    }
+                                    let newDiv = document.createElement('h3');
                                     console.log("client work happening")
                                     let f = data.first.trim();
                                     let fmod = f.charAt(0).toUpperCase() + f.substring(1, f.length);
@@ -67,6 +75,12 @@ $(document).ready(
                                     document.getElementById("userLogin").appendChild(newDiv);
                                     document.getElementById("checkout").style.display = "block";
 
+                                    let newlogOut = document.createElement('button');
+                                    newlogOut.innerText = "Log Out";
+                                    newlogOut.classList = "logbuttons";
+                                    newlogOut.onclick = logout;
+                                    document.getElementById("userLogin").appendChild(newlogOut);
+
                                 } else {
                                     window.alert("Your username or password doesnt exist")
                                 }
@@ -78,8 +92,6 @@ $(document).ready(
                         })
                     }
 
-
-
                 })
             },
             methods: {
@@ -89,8 +101,30 @@ $(document).ready(
                 closeform: () => {
                     document.getElementById("myForm").style.display = "none";
                 },
+                vmlogout: () => {
+                    console.log("logging out")
+                }
             },
 
         })
     }
+
+
 )
+function logout() {
+    $.ajax({
+        url: "/endSession",
+        type: "POST",
+        success: (data) => {
+            if (data.status === "success") {
+                window.location.href="/";
+            }
+        },
+        error: function (data) {
+            console.log('An error occurred.');
+            console.log(data);
+        },
+    })
+}
+
+module.exports = logout;
