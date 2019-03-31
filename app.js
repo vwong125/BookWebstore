@@ -72,6 +72,10 @@ app.get("/list.html", (req, res) => {
 app.get("/book.html", (req, res) => {
     res.sendFile("book.html", { root: __dirname + "/public" });
 });
+// get request for /book.html, send book.html
+app.get("/about.html", (req, res) => {
+    res.sendFile("about.html", { root: __dirname + "/public" });
+});
 
 //cart page
 app.get("/cart.html", (req, res) => {
