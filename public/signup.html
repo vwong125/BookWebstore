@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="styles/signup.css">
 
     <script src="scripts/signupbundle.js"></script>
+    
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/1.0.18/vue.min.js"></script>
 </head>
 
@@ -18,26 +19,13 @@
             <h1 class="logo"><a href="search.html">Book Page</a></h1>
             <ul class="main-nav">
                 <li><a href="/search.html">Home</a></li>
-                <li><a href="#">About</a></li>
+                <li><a href="/about.html">About</a></li>
                 <li id="checkout"><a href="/cart.html">Cart</a></li>
-                <li><a href="/signup.html">Sign Up</a></li>
+                <li id="signup"><a href="/signup.html">Sign Up</a></li>
             </ul>
+            <div></div>
 
-            <div class='user' id='userLogin'>
-                <button id='loginpopup' class="logbuttons" type="button" @click="openForm">Login</button>
-
-                <div class="form-popup" id="myForm">
-                    <form class="form-container" id="userInfoForm">
-                        <h1>Login</h1>
-
-                        <label for="Username"><b>Username</b></label>
-                        <input id='getUserID' type="text" placeholder="Enter Username" name="user">
-
-                        <label for="psw"><b>Password</b></label>
-                        <input id='psw' type="password" placeholder="Enter Password" name="psw">
-                    </form>
-                </div>
-            </div>
+            
         </header>
 
         <div id="signupform">

@@ -21,6 +21,7 @@ $(document).ready(
                             newName.innerText = "Welcome " + data.name;
                             document.getElementById("userLogin").appendChild(newName);
                             document.getElementById("checkout").style.display = "block";
+                            document.getElementById("signup").style.display = "none";
 
                             let newlogOut = document.createElement('button');
                             newlogOut.innerText = "Log Out";
@@ -74,6 +75,7 @@ $(document).ready(
                                     newDiv.innerText = fullname;
                                     document.getElementById("userLogin").appendChild(newDiv);
                                     document.getElementById("checkout").style.display = "block";
+                                    document.getElementById("signup").style.display = "none";
 
                                     let newlogOut = document.createElement('button');
                                     newlogOut.innerText = "Log Out";
@@ -101,9 +103,7 @@ $(document).ready(
                 closeform: () => {
                     document.getElementById("myForm").style.display = "none";
                 },
-                vmlogout: () => {
-                    console.log("logging out")
-                }
+                
             },
 
         })
