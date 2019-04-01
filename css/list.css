@@ -100,7 +100,7 @@ body, .app {
 }
 
 #book_info_block {
-    max-height: 200px;
+    max-height: 180px;
     overflow-y: scroll;
 }
 
