@@ -13,48 +13,49 @@
 </head>
 
 <body>
+    <div id="app">
+        <div class="app">
+            <header class="header">
+                <h1 class="logo"><a href="#">Bookstore DB</a></h1>
+                <ul class="main-nav">
+                    <li><a href="/search.html">Home</a></li>
+                    <li><a href="/about.html">About</a></li>
+                    <li id="checkout"><a href="/cart.html">Cart</a></li>
+                    <li id="signup"><a href="/signup.html">Sign Up</a></li>
 
-    <div class="app" id="app">
-        <header class="header">
-            <h1 class="logo"><a href="#">Bookstore DB</a></h1>
-            <ul class="main-nav">
-                <li><a href="/search.html">Home</a></li>
-                <li><a href="/about.html">About</a></li>
-                <li id="checkout"><a href="/cart.html">Cart</a></li>
-                <li id="signup"><a href="/signup.html">Sign Up</a></li>
+                </ul>
 
-            </ul>
+                <div class='user' id='userLogin'>
+                    <button class="logbuttons" id='loginpopup' type="button" @click="openForm">Login</button>
 
-            <div class='user' id='userLogin'>
-                <button class="logbuttons" id='loginpopup' type="button" @click="openForm">Login</button>
+                    <div class="form-popup" id="myForm">
+                        <form class="form-container" id="userInfoForm">
+                            <h1>Login</h1>
 
-                <div class="form-popup" id="myForm">
-                    <form class="form-container" id="userInfoForm">
-                        <h1>Login</h1>
+                            <label for="Username"><b>Username</b></label>
+                            <input id='getUserID' type="text" placeholder="Enter Username" name="user">
 
-                        <label for="Username"><b>Username</b></label>
-                        <input id='getUserID' type="text" placeholder="Enter Username" name="user">
+                            <label for="psw"><b>Password</b></label>
+                            <input id='psw' type="password" placeholder="Enter Password" name="psw">
 
-                        <label for="psw"><b>Password</b></label>
-                        <input id='psw' type="password" placeholder="Enter Password" name="psw">
-
-                        <button type="submit" id='loginbtn' class="btn">Login</button>
-                        <button type="submit" class="btn cancel" @click="closeForm">Close</button>
-                    </form>
+                            <button type="submit" id='loginbtn' class="btn">Login</button>
+                            <button type="submit" class="btn cancel" @click="closeForm">Close</button>
+                        </form>
+                    </div>
                 </div>
+            </header>
+
+            <div class="search">
+                <input v-model="title" id="search-bar" type="search" placeholder="Search a book today!">
+                <button @click='search' id="search-button">Search</button>
             </div>
-        </header>
 
-        <div class="search">
-            <input v-model="title" id="search-bar" type="search" placeholder="Search a book today!">
-            <button @click='search' id="search-button">Search</button>
-        </div>
-
-        <div class="recommend">
-            <div class="bookitem" v-for="book in featuredBooks">
-                <img id="bookimg" @click="moreInfo(book.book_title)" src="{{book.book_picture}}" alt="book"
-                    height="200px" width="130px" style="margin:none">
-                <p id="booktitle">{{book.book_title}}</p>
+            <div class="recommend">
+                <div class="bookitem" v-for="book in featuredBooks">
+                    <img id="bookimg" @click="moreInfo(book.book_title)" src="{{book.book_picture}}" alt="book"
+                        height="200px" width="130px" style="margin:none">
+                    <p id="booktitle">{{book.book_title}}</p>
+                </div>
             </div>
         </div>
     </div>
